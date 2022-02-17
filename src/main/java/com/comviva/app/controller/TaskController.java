@@ -21,12 +21,19 @@ public class TaskController {
 	@Autowired
 	private TaskService taskService;
 	
+	/**This method created to return
+	 * list of task present in the database */
 	@RequestMapping("/list")
 	public List<Task> listTasks() {
 		List<Task> tasks= taskService.listTasks();
 		return tasks;
 	}
 	
+	/** *
+	 * This method takes task as an input
+	 * and insert that into database
+	 * @param task
+	 */
 	@RequestMapping(path="/save", method=RequestMethod.POST,consumes=org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
 	public void saveTask(@RequestBody Task task) {
 		taskService.saveTask(task);
